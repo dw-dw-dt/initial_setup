@@ -12,9 +12,7 @@ if __name__ == '__main__':
     subprocess.run('sudo apt update && sudo apt upgrade -y', shell=True, check=True)
 
     # install TeXLive
-    if pathlib.Path('/usr/local/texlive').exists():
-        pass
-    else:
+    if not pathlib.Path('/usr/local/texlive').exists():
         pathlib.Path('/usr/local/tex').mkdir(parents = True, exist_ok= True)
 
         if pathlib.Path('/usr/local/tex/install-tl-unx.tar.gz').exists():
