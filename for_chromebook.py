@@ -8,6 +8,8 @@ import platform
 
 
 if __name__ == '__main__':
+    tex_ver = 2022
+    
     # update & upgrade
     subprocess.run('sudo apt update && sudo apt upgrade -y', shell=True, check=True)
 
@@ -27,18 +29,18 @@ if __name__ == '__main__':
         exit()
 
     # version check
-    if pathlib.Path('/usr/local/texlive/2022').exists():
+    if pathlib.Path(f'/usr/local/texlive/{tex_ver}').exists():
         pass
     else:
-        raise ValueError('LaTeX ver is not 2022')
+        raise ValueError(f'LaTeX ver is not {tex_ver}')
     
     # update .bashrc
     pathlib.Path('.bashrc').touch(exist_ok= True)
 
     if platform.machine() == 'aarch64':
-        cmd = 'export PATH=$PATH:/usr/local/texlive/2022/bin/aarch64-linux'
+        cmd = f'export PATH=$PATH:/usr/local/texlive/{tex_ver}/bin/aarch64-linux'
     else:
-        cmd = 'export PATH=$PATH:/usr/local/texlive/2022/bin/x86_64-linux'
+        cmd = f'export PATH=$PATH:/usr/local/texlive/{tex_ver}/bin/x86_64-linux'
 
     already_written = False
     with open('.bashrc', 'r') as f:
