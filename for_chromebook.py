@@ -8,7 +8,7 @@ import platform
 
 
 if __name__ == '__main__':
-    tex_ver = 2022
+    tex_ver = 2023
     
     # update & upgrade
     subprocess.run('sudo apt update && sudo apt upgrade -y', shell=True, check=True)
